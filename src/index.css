@@ -1,0 +1,390 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.no-backdrop {
+  background: black !important;
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.4s ease-out forwards;
+}
+
+[data-radix-portal] > div:first-child {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+@keyframes neon-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 2px currentColor, 0 0 5px currentColor, 0 0 8px currentColor, 0 0 12px currentColor;
+  }
+}
+
+@keyframes neon-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, inset 0 0 5px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor, inset 0 0 10px currentColor;
+  }
+}
+
+@keyframes rainbow-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+
+
+@keyframes electric-pulse {
+  0%,
+  100% {
+    border-color: #00ffff;
+    box-shadow: 0 0 10px #00ffff, inset 0 0 10px #00ffff;
+  }
+  25% {
+    border-color: #ff0080;
+    box-shadow: 0 0 15px #ff0080, inset 0 0 15px #ff0080;
+  }
+  50% {
+    border-color: #ffff00;
+    box-shadow: 0 0 20px #ffff00, inset 0 0 20px #ffff00;
+  }
+  75% {
+    border-color: #8000ff;
+    box-shadow: 0 0 15px #8000ff, inset 0 0 15px #8000ff;
+  }
+}
+
+
+.neon-text {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.victory-text {
+  animation: neon-pulse 1s ease-in-out infinite, rainbow-shift 3s linear infinite;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+
+.neon-border {
+  border-color: currentColor;
+  box-shadow: 0 0 5px currentColor, inset 0 0 5px currentColor;
+  transition: all 0.3s ease;
+}
+
+.neon-border:hover {
+  animation: electric-pulse 1.5s ease-in-out infinite;
+}
+
+.neon-border-hover:hover {
+  animation: electric-pulse 2s ease-in-out infinite;
+}
+
+
+.neon-glow {
+  animation: neon-glow 2s ease-in-out infinite;
+}
+
+.neon-glow-red {
+  color: #ff4444;
+  animation: neon-glow 1s ease-in-out infinite;
+}
+
+.neon-glow-green {
+  color: #44ff44;
+  animation: neon-glow 1s ease-in-out infinite;
+}
+
+
+.neon-icon {
+  filter: drop-shadow(0 0 5px currentColor);
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+
+.neon-card {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+}
+
+.neon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3), 0 0 20px rgba(255, 0, 128, 0.2), inset 0 0 20px rgba(128, 0, 255, 0.1);
+}
+
+.victory-card {
+  animation: neon-glow 1.5s ease-in-out infinite, cyber-float 4s ease-in-out infinite;
+}
+
+
+.neon-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-cell::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.neon-cell:hover::before {
+  left: 100%;
+}
+
+.neon-emoji {
+  filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #ff0080);
+  animation: rainbow-shift 2s linear infinite;
+}
+
+
+button,
+.card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 6px;
+  border: 1px solid #00ffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00ffff, #ff0080);
+  border-radius: 6px;
+  border: 1px solid #00ffff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ff0080, #ffff00);
+  box-shadow: 0 0 10px #00ffff;
+}
+
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.glitch-effect:hover {
+  animation: glitch 0.3s ease-in-out;
+}
+
+
+@keyframes holographic {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.holographic {
+  background: linear-gradient(45deg, #00ffff, #ff0080, #ffff00, #8000ff);
+  background-size: 400% 400%;
+  animation: holographic 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+@keyframes particle-float {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) rotate(90deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px) rotate(180deg);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px) rotate(270deg);
+    opacity: 0.8;
+  }
+}
+
+.particle-effect::after {
+  content: "✨";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  animation: particle-float 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+
+@media (max-width: 768px) {
+  .neon-text {
+    font-size: 2.5rem;
+  }
+
+  .victory-text {
+    font-size: 2rem;
+  }
+
+  .neon-glow {
+    animation-duration: 1.5s;
+  }
+}
+
+
+@media (prefers-contrast: high) {
+  .neon-border {
+    border-width: 3px;
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-text,
+  .neon-glow,
+  .victory-text,
+  .neon-icon {
+    animation: none;
+  }
+
+  .neon-border:hover {
+    animation: none;
+    box-shadow: 0 0 10px currentColor;
+  }
+}
