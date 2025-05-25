@@ -34,9 +34,6 @@ The "vanishing" feature was implemented using a FIFO queue for each player’s e
 - When placing the 4th emoji, the emoji at the front of the queue (oldest) is removed from the board.  
 - The new emoji is placed in a different cell, disallowing placement on the removed emoji’s cell immediately.  
 - Animations using **Three.js** add smooth fade-out effects for vanished emojis, improving user experience.
-
-
-
 - Implemented a **score tracker** to keep track of wins across multiple rounds.  
 - Added **sound effects** for emoji placement, disappearance, and winning.  
 - Animated the winning line highlight with colorful effects.  
@@ -44,6 +41,8 @@ The "vanishing" feature was implemented using a FIFO queue for each player’s e
 - Added an option to customize emoji categories or create custom sets.  
 - Improved AI opponent for single-player mode.  
 - Better mobile touch responsiveness and swipe gestures.  
+
+
 
 
 
