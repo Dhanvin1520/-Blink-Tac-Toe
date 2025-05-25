@@ -1,13 +1,11 @@
 # Blink Tac Toe
 
-[Live Demo] https://blink-tac-toe-232323.netlify.app/  <!-- Replace this with your actual live deployed URL -->
+[Live Demo] https://blink-tac-toe-232323.netlify.app/ 
 
 
 ## Overview
 
 **Blink Tac Toe** is a fun, twisted take on the classic Tic Tac Toe game built with **React.js**, **Vite**, **Three.js**, and **shadcn UI** for styling. Instead of Xs and Os, players use emojis from custom categories, and a unique "vanishing emoji" rule keeps the gameplay dynamic and challenging.
-
----
 
 ## Tech Stack
 
@@ -29,10 +27,7 @@
 - Clear UI indicating which player's turn it is.  
 - Help section explaining game rules for first-time players.  
 
----
-
-## Vanishing Emoji Implementation
-
+## Bonus Features implemented
 The "vanishing" feature was implemented using a FIFO queue for each player’s emoji placements:
 
 - Each player’s placed emojis are tracked in a queue (array).  
@@ -49,5 +44,9 @@ The "vanishing" feature was implemented using a FIFO queue for each player’s e
 - Added an option to customize emoji categories or create custom sets.  
 - Improved AI opponent for single-player mode.  
 - Better mobile touch responsiveness and swipe gestures.  
+
+
+
+---
 
 Dhanvin Vadlamudi
