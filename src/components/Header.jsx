@@ -1,16 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "../components/ui/button";
 import { Volume2, VolumeX, RotateCcw, HelpCircle } from "lucide-react";
 
 export default function Header({ soundEnabled, setSoundEnabled, helpOpen, setHelpOpen, resetGame }) {
   const [dialogKey, setDialogKey] = useState(0);
+  const popupRef = useRef(null);
 
   useEffect(() => {
     setHelpOpen(true);
     setDialogKey((prev) => prev + 1);
-    const timer = setTimeout(() => {}, 50);
+
+    const timer = setTimeout(() => {
+      setHelpOpen(false);
+    }, 2000);
+
     return () => clearTimeout(timer);
   }, [setHelpOpen]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setHelpOpen(false);
+      }
+    }
+    if (helpOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [helpOpen, setHelpOpen]);
 
   return (
     <div className="text-center mb-8 relative">
@@ -47,11 +68,11 @@ export default function Header({ soundEnabled, setSoundEnabled, helpOpen, setHel
       </div>
       {helpOpen && (
         <div
+          ref={popupRef}
           key={dialogKey}
           className="absolute top-20 left-1/2 transform -translate-x-1/2 bg-gradient-to-br from-black via-[#0f172a] to-black border-2 border-cyan-500 text-white max-w-lg p-6 rounded-2xl shadow-[0_0_20px_#22d3ee] animate-slide-in z-[999]"
           style={{ backdropFilter: "none" }}
         >
-          {/* Close button */}
           <button
             onClick={() => setHelpOpen(false)}
             className="absolute top-3 right-3 text-cyan-400 hover:text-white transition-colors"
